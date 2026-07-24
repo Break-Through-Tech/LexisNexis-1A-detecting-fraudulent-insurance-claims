@@ -18,127 +18,114 @@
 
 ---
 
-### 🔍 SME Feedback from the Break Through Tech Evaluation Team
+## 📋 BTT Internal Evaluation Notes
+*(This section is for BTT staff and CAs only — remove before sharing with students)*
 
-*Challenge Advisor: Please address the following feedback by editing this page. Your AI Studio Coach can help make project adjustments as needed, too. In addition to the grey section above, this section should be removed before sharing the repo with your student team.*
+### Technical Vetting
+| Check | Status | Notes |
+| :--- | :--- | :--- |
+| Python Compatibility | 🟢 | The stack relies on scikit-learn, imbalanced-learn (SMOTE), and SHAP, which are fully compatible with standard Google Colab environments. |
+| Data Readiness | 🟢 | The provided Kaggle dataset is pre-structured and cleaned, requiring minimal preprocessing, which allows fellows to focus on feature engineering and modeling. |
+| Resource Check | 🟢 | The dataset is small (~sub-1GB) and fits comfortably in Colab memory; no GPUs or paid APIs are required. |
+
+### Internal Scores
+- **Student Fit Score:** 9/10
+- **Technical Depth Score:** 7/10
+- **Overall Recommendation:** APPROVE
+
+### Advisor Feedback Draft
+This project is a classic 'Goldilocks' problem that aligns perfectly with the BTT curriculum. The focus on business-aligned metrics like PR-AUC and top-decile capture rates is excellent for student professional growth. Technical adjustments: 1) Require a strict temporal or hold-out split rather than K-Fold to prevent leakage, and 2) Shift the focus from Streamlit dashboarding to a comprehensive model-card documentation that justifies the SHAP value findings. Please finalize the feature list to ensure no future-looking data is included.
 
 ---
 
-# [Project Title]
+# Detecting Fraudulent Insurance Claims: A Risk-Scoring Model for Faster, Fairer Claims Triage
 
-**Company / Org:** [Company / Org Name]  
-**Challenge Advisor:** [Name, Title, Email]  
-**Program:** Break Through Tech AI Studio - Fall 2026
+**Company / Org:** LexisNexis Risk Solutions Group  
+**Challenge Advisor:** Stephanie Le, ledaquynhnhi@gmail.com  
+**Program:** Break Through Tech AI Studio - Fall 2026  
 
 ---
 
-## 🏢 About [Company / Org Name]
-
-[2-3 sentences about your company: what you do, your industry, etc. You may also choose to specify your specific department or team.]
+## 🏢 About LexisNexis Risk Solutions Group
+LexisNexis Risk Solutions Group is a global leader in providing data, analytics, and technology solutions to help organizations manage risk and improve decision-making. The team objectives center on leveraging predictive modeling to enhance operational efficiency within the insurance sector, specifically by optimizing claims processing workflows.
 
 ---
 
 ## 🎯 The Challenge
-
 ### Project Summary
-[In 2-3 sentences, describe what you're asking the team to do. Be specific about the type of data, ML techniques, and potential impact.]
-
-> **Example:** "In this project, your team will use customer transaction data and classification algorithms to build a model that predicts which users are likely to churn. This will help our retention team prioritize outreach."
+This project tasks the team with developing a robust risk-scoring model to classify auto insurance claims based on their likelihood of fraud. By utilizing structured historical claims data and supervised machine learning techniques, students will create an interpretable system that enables the company to prioritize high-risk investigations while expediting the processing of legitimate claims.
 
 ### Success Criteria
-[What does success look like? Describe evaluation metrics (accuracy, F1 score, etc.) or qualitative outcomes that would make this project valuable to your company.]
+Precision, recall, F1, PR-AUC on the minority (fraud) class, plus a business-framed metric like '% of fraud cases captured if investigators review only the top 10–20% highest-scored claims'. Successful outcome by December: a working, interpretable model that clearly beats a naive baseline on recall/precision trade-off, with a short explanation of which features drive risk.
 
 ### Project Milestones
-
-Use these milestones to guide your work. Your team will create a **GitHub Projects board** to track tasks within each milestone.
-
+Use these milestones to guide your work. Your team will create a GitHub Projects board to track tasks within each milestone.
 | Month | Milestone | Key Activities |
 |-------|-----------|----------------|
-| **September** | [e.g., Data Understanding] | [e.g., Explore dataset, handle missing values, document findings] |
-| **October** | [e.g., Model Development] | [e.g., Train baseline model, experiment with approaches, iterate] |
-| **November** | [e.g., Evaluation & Presentation] | [e.g., Finalize model, prepare presentation, document results] |
+| **September** | Data Exploration & Preprocessing | Conduct Exploratory Data Analysis (EDA), finalize the data dictionary, clean the raw dataset, and establish a baseline predictive model. |
+| **October** | Feature Engineering & Baseline Modeling | Implement feature extraction, apply SMOTE to mitigate class imbalance, and train 2–3 different classifier algorithms for comparison. |
+| **November** | Model Optimization & Evaluation | Fine-tune model hyperparameters, validate against business-aligned metrics, and integrate SHAP values for model interpretability. |
+| **December** | Insights, Deliverables & Presentation | Finalize the documentation, polish the GitHub repository, and prepare a presentation summarizing business recommendations and model performance. |
 
 > **Note for the team:** Please create a GitHub Projects board in this repository to break these milestones into weekly tasks. Go to the **Projects** tab → **New project** → Choose **Board** → Add columns for each month.
 
 ---
 
 ## 📊 Dataset
-
-**Name and Source:** [Dataset name and where it's from]  
-**Format:** [e.g., CSV, JSON, images]  
-**Size:** [Approximate size in MB/GB]  
-**Location:** [Link to dataset or instructions for accessing it]
+**Name and Source:** Vehicle Claim Fraud Detection (Kaggle): https://www.kaggle.com/datasets/shivamb/vehicle-claim-fraud-detection  
+**Format:** CSV  
+**Size:** under 1gb  
+**Location:** Accessible via Kaggle or provided local project directory  
 
 ### Key Details
-- [Brief description of what's in the data]
-- [Any known limitations or preprocessing needed]
-- [Link to data dictionary or documentation, if available]
+- Structured historical auto insurance claims data including policy details, claimant demographics, and incident characteristics. Publicly available via Kaggle: https://www.kaggle.com/datasets/shivamb/vehicle-claim-fraud-detection
+- Ensure all categorical variables are properly encoded and that the team performs rigorous checks for data leakage, particularly ensuring that no variables contain "post-incident" information not available at the time of claim filing.
 
 ---
 
 ## 🛠️ Suggested Approach
-
-**ML Problem Type:** [e.g., Classification, Regression, NLP, Computer Vision, LLM/RAG]
-
+**ML Problem Type:** Classification  
 **Recommended Libraries:**
-- [e.g., pandas, scikit-learn, TensorFlow, Hugging Face]
-
-**Evaluation Metrics:**
-- [e.g., Accuracy, Precision/Recall, RMSE, BLEU score]
+- logistic regression
+- random forest
+- gradient boosting
+- SMOTE
+- SHAP
+- Streamlit
+**Evaluation Metrics:** Precision, Recall, F1-Score, PR-AUC, and the Top-Decile Fraud Capture Rate.
 
 ---
 
 ## 📚 Resources to Get Started
-
 The following resources will help your team understand the problem space and potential technical approaches for this project:
-
 **Background Reading:**
-- [e.g., Link to an article or blog post about the problem domain]
-- [e.g., Link to an industry report or case study]
-
+- Industry standards for insurance fraud detection and the role of interpretability in risk-scoring models.
 **Technical Tutorials:**
-- [e.g., Link to a free tutorial on the ML technique(s) involved]
-- [e.g., Link to documentation for a key library or tool]
-
+- Scikit-learn documentation on handling imbalanced datasets and the official SHAP GitHub library tutorials.
 **Code Examples:**
-- [e.g., Link to a relevant GitHub repo]
-- [e.g., Link to a sample implementation or starter code]
-
-**Other:**
-- [Links to any additional resources — e.g., papers, videos, podcasts, etc.]
-
-*Feel free to explore beyond these, and share anything interesting you find with me!*
+- Reference standard implementations of Gradient Boosting and Random Forest classifiers within the provided Kaggle community notebooks.
 
 ---
 
-## 🤝 How We'll Work Together (v2)
-
-**Official check-ins:** During our biweekly 45-minute AI Studio Lab Section meeting block (2nd and 4th week of every month)
-
- **Other ways to reach out to me with questions:** 
-* [e.g., Your team's channel within Break Through Tech’s Discord space]
-* [e.g., Email; please copy your teammates and AI Studio Coach]
-* [e.g., Request a team check-in on Zoom]
-* [Note: I will aim to respond within 48 hours. Please reach out to your AI Studio Coach with urgent questions.]
-
-> 💡 **Challenge Advisor: Please update the above based on your availability and preference. If you are not able to answer questions or meet with fellows outside of the biweekly Lab Section check-ins, simply write in "N/A (only available during the official check-in times)"**
-
-**Recommended free coding / collaboration tools**
-* […]
-* […]
+## 🤝 How We'll Work Together
+**Check-ins:** During our biweekly 60-min AI Studio Lab Section meeting block (2nd and 4th week of every month)  
+**Communication:** Email and scheduled Slack channels  
+**Response time:** 24-48 hours during the work week  
+**Recommended Tools:**
+- **Coding:** Google Colab Free Tier  
+- **Collaboration:** GitHub, Notion  
+- **Virtual Meetings:** Zoom, Google Meet  
 
 ---
 
 ## 🚀 Getting Started
+1. **Review this overview document** and note any questions for our first meeting.
+2. **Begin reviewing the dataset** using the link provided in the Dataset section.
+3. **Read the GitHub Projects documentation** [here](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects).
 
-1. **Review this overview document** and note any questions for our first meeting
-2. **Begin reviewing the dataset** using the link above
-3. **Read the GitHub Projects documentation** [here](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
-
-I’m excited to work with you!
+I'm excited to work with you!
 
 ---
 
 ## ❓ Questions?
-
-Please bring any questions to our first meeting during the week of August 24th (Break Through Tech’s Bridge to Studio - Session C). 
+Please bring any questions to our first meeting during the week of August 24th (Break Through Tech's Bridge to Studio - Session B).
