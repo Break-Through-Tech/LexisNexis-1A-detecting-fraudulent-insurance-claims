@@ -60,12 +60,17 @@ Precision, recall, F1, PR-AUC on the minority (fraud) class, plus a business-fra
 
 ### Project Milestones
 Use these milestones to guide your work. Your team will create a GitHub Projects board to track tasks within each milestone.
+
 | Month | Milestone | Key Activities |
-|-------|-----------|----------------|
-| **September** | Data Exploration & Preprocessing | Conduct Exploratory Data Analysis (EDA), finalize the data dictionary, clean the raw dataset, and establish a baseline predictive model. |
-| **October** | Feature Engineering & Baseline Modeling | Implement feature extraction, apply SMOTE to mitigate class imbalance, and train 2–3 different classifier algorithms for comparison. |
-| **November** | Model Optimization & Evaluation | Fine-tune model hyperparameters, validate against business-aligned metrics, and integrate SHAP values for model interpretability. |
-| **December** | Insights, Deliverables & Presentation | Finalize the documentation, polish the GitHub repository, and prepare a presentation summarizing business recommendations and model performance. |
+| :--- | :--- | :--- |
+| September | Data Ingestion, EDA & Baseline Modeling | • Ingest and clean the vehicle insurance claims dataset (handling missing values, class imbalance, and categorical encodings).<br>• Perform Exploratory Data Analysis (EDA) on policyholder demographics, claim amounts, incident types, and fraud distributions.<br>• Preprocess raw features and extract baseline metrics (policy duration, claim ratio, vehicle age).<br>• Train baseline classifiers (Logistic Regression / Decision Trees) and establish benchmark metrics (ROC-AUC, Precision, Recall, F1-Score). |
+| October | Feature Engineering & Risk-Scoring Model Optimization | • Engineer domain-specific fraud indicators (police report availability, historical claim frequency, policy-to-incident time delta).<br>• Train advanced gradient boosting models (XGBoost, LightGBM, CatBoost) to generate continuous risk scores for claims triage.<br>• Perform hyperparameter tuning, cost-sensitive threshold tuning, and cross-validation to optimize fraud detection while minimizing false positives on legitimate claims. |
+| November / December | Model Explainability, Triage Dashboard & Deliverables | • Apply SHAP (SHapley Additive exPlanations) to provide transparent risk factor breakdowns for flagged claims.<br>• Build an interactive Streamlit application enabling claims adjusters to input claim details, view risk scores, and receive triage recommendations (e.g., Fast-Track vs. Special Investigation Unit referral).<br>• Finalize clean, reproducible GitHub repository, project documentation, and stakeholder presentation deck. |
+
+### Stretch Goals
+* **Automated Fraud Ring Graphing:** Construct entity graphs (linking claims by shared phone numbers, repair shops, addresses, or lawyers) to uncover coordinated fraud syndicates.
+* **NLP Claim Text Narrative Extraction:** Incorporate text embeddings from qualitative adjuster notes or accident descriptions using transformer models to capture hidden risk indicators.
+* **Real-Time Claims Triage REST API:** Package the risk-scoring model into a lightweight FastAPI endpoint to enable seamless integration into existing claims management software.
 
 > **Note for the team:** Please create a GitHub Projects board in this repository to break these milestones into weekly tasks. Go to the **Projects** tab → **New project** → Choose **Board** → Add columns for each month.
 
