@@ -75,7 +75,7 @@ Use these milestones to guide your work. Your team will create a GitHub Projects
 ---
 
 ## 📊 Dataset
-**Name and Source:** Vehicle Claim Fraud Detection (Kaggle): 
+**Name and Source:** Vehicle Insurance Claim Fraud Detection (Kaggle): 
 **Format:** CSV  
 **Size:** under 1gb  
 **Location:** https://www.kaggle.com/datasets/shivamb/vehicle-claim-fraud-detection
