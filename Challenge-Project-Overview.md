@@ -53,84 +53,103 @@ LexisNexis Risk Solutions Group is a global leader in providing data, analytics,
 
 ## 🎯 The Challenge
 ### Project Summary
-This project tasks the team with developing a robust risk-scoring model to classify auto insurance claims based on their likelihood of fraud. By utilizing structured historical claims data and supervised machine learning techniques, students will create an interpretable system that enables the company to prioritize high-risk investigations while expediting the processing of legitimate claims.
+In this project, you will use structured historical auto insurance claims data (policy details, claimant demographics, and incident characteristics) and supervised classification techniques (like logistic regression, random forest, gradient boosting) to build a model that scores claims by likelihood of fraud. This will help our company address the challenge of prioritizing limited fraud-investigation resources toward the claims most likely to be fraudulent, reducing losses from fraudulent payouts while minimizing review delays for legitimate claimants
 
 ### Success Criteria
-Precision, recall, F1, PR-AUC on the minority (fraud) class, plus a business-framed metric like '% of fraud cases captured if investigators review only the top 10–20% highest-scored claims'. Successful outcome by December: a working, interpretable model that clearly beats a naive baseline on recall/precision trade-off, with a short explanation of which features drive risk.
+Given fraud is a rare-class problem, accuracy alone is misleading. Use precision, recall, F1, and PR-AUC on the minority (fraud) class, plus a business-framed metric like "% of fraud cases captured if investigators review only the top 10–20% highest-scored claims." A successful outcome by December: a working, interpretable model that clearly beats a naive baseline on recall/precision trade-off, with a short explanation of which features drive risk.
+
+### Stretch Goals
+cost-sensitive learning (weighting false negatives more heavily, since missed fraud is costlier than false alarms), a lightweight Streamlit demo for exploring flagged claims, stacked/ensemble models, unsupervised anomaly detection as a complementary check, enriching with a second public dataset.
 
 ### Project Milestones
 Use these milestones to guide your work. Your team will create a GitHub Projects board to track tasks within each milestone.
 
 | Month | Milestone | Key Activities |
-| :--- | :--- | :--- |
-| September | Data Ingestion, EDA & Baseline Modeling | • Ingest and clean the vehicle insurance claims dataset (handling missing values, class imbalance, and categorical encodings).<br>• Perform Exploratory Data Analysis (EDA) on policyholder demographics, claim amounts, incident types, and fraud distributions.<br>• Preprocess raw features and extract baseline metrics (policy duration, claim ratio, vehicle age).<br>• Train baseline classifiers (Logistic Regression / Decision Trees) and establish benchmark metrics (ROC-AUC, Precision, Recall, F1-Score). |
-| October | Feature Engineering & Risk-Scoring Model Optimization | • Engineer domain-specific fraud indicators (police report availability, historical claim frequency, policy-to-incident time delta).<br>• Train advanced gradient boosting models (XGBoost, LightGBM, CatBoost) to generate continuous risk scores for claims triage.<br>• Perform hyperparameter tuning, cost-sensitive threshold tuning, and cross-validation to optimize fraud detection while minimizing false positives on legitimate claims. |
-| November / December | Model Explainability, Triage Dashboard & Deliverables | • Apply SHAP (SHapley Additive exPlanations) to provide transparent risk factor breakdowns for flagged claims.<br>• Build an interactive Streamlit application enabling claims adjusters to input claim details, view risk scores, and receive triage recommendations (e.g., Fast-Track vs. Special Investigation Unit referral).<br>• Finalize clean, reproducible GitHub repository, project documentation, and stakeholder presentation deck. |
-
-### Stretch Goals
-* **Automated Fraud Ring Graphing:** Construct entity graphs (linking claims by shared phone numbers, repair shops, addresses, or lawyers) to uncover coordinated fraud syndicates.
-* **NLP Claim Text Narrative Extraction:** Incorporate text embeddings from qualitative adjuster notes or accident descriptions using transformer models to capture hidden risk indicators.
-* **Real-Time Claims Triage REST API:** Package the risk-scoring model into a lightweight FastAPI endpoint to enable seamless integration into existing claims management software.
+|---|---|---|
+| September | [Title] | Data exploration & cleaning; EDA on fraud vs. non-fraud patterns, review the provided data dictionary, establish a baseline model (logistic regression) and baseline metrics. |
+| October | [Title] | Feature engineering; address class imbalance (class weighting, SMOTE), train/tune 2–3 model types (random forest, gradient boosting) and compare. |
+| November | [Title] | Finalize best model, evaluate with business-relevant metrics, add interpretability (SHAP or feature importance); polish GitHub repo, write-up, and final presentation. |
 
 > **Note for the team:** Please create a GitHub Projects board in this repository to break these milestones into weekly tasks. Go to the **Projects** tab → **New project** → Choose **Board** → Add columns for each month.
 
 ---
 
 ## 📊 Dataset
-**Name and Source:** Vehicle Claim Fraud Detection (Kaggle): https://www.kaggle.com/datasets/shivamb/vehicle-claim-fraud-detection  
+**Name and Source:** Vehicle Claim Fraud Detection (Kaggle): 
 **Format:** CSV  
 **Size:** under 1gb  
-**Location:** Accessible via Kaggle or provided local project directory  
+**Location:** https://www.kaggle.com/datasets/shivamb/vehicle-claim-fraud-detection
 
 ### Key Details
-- Structured historical auto insurance claims data including policy details, claimant demographics, and incident characteristics. Publicly available via Kaggle: https://www.kaggle.com/datasets/shivamb/vehicle-claim-fraud-detection
-- Ensure all categorical variables are properly encoded and that the team performs rigorous checks for data leakage, particularly ensuring that no variables contain "post-incident" information not available at the time of claim filing.
+- [Brief description of what's in the data]
+- [Any known limitations or preprocessing needed]
+- [Link to data dictionary or documentation, if available]
 
 ---
 
 ## 🛠️ Suggested Approach
-**ML Problem Type:** Classification  
-**Recommended Libraries:**
-- logistic regression
-- random forest
-- gradient boosting
-- SMOTE
-- SHAP
-- Streamlit
-**Evaluation Metrics:** Precision, Recall, F1-Score, PR-AUC, and the Top-Decile Fraud Capture Rate.
 
+**ML Problem Type:** Classification  
+
+**Recommended Libraries:**
+- [e.g., pandas, scikit-learn, TensorFlow, Hugging Face]
+
+**Evaluation Metrics:**
+- [e.g., Accuracy, Precision/Recall, RMSE, BLEU score]
+  
 ---
 
 ## 📚 Resources to Get Started
+
 The following resources will help your team understand the problem space and potential technical approaches for this project:
+
 **Background Reading:**
-- Industry standards for insurance fraud detection and the role of interpretability in risk-scoring models.
+- [e.g., Link to an article or blog post about the problem domain]
+- [e.g., Link to an industry report or case study]
+
 **Technical Tutorials:**
-- Scikit-learn documentation on handling imbalanced datasets and the official SHAP GitHub library tutorials.
+- [e.g., Link to a free tutorial on the ML technique(s) involved]
+- [e.g., Link to documentation for a key library or tool]
+
 **Code Examples:**
-- Reference standard implementations of Gradient Boosting and Random Forest classifiers within the provided Kaggle community notebooks.
+- [e.g., Link to a relevant GitHub repo]
+- [e.g., Link to a sample implementation or starter code]
+
+**Other:**
+- [Links to any additional resources — e.g., papers, videos, podcasts, etc.]
+
+*Feel free to explore beyond these, and share anything interesting you find with me!*
 
 ---
 
 ## 🤝 How We'll Work Together
-**Check-ins:** During our biweekly 60-min AI Studio Lab Section meeting block (2nd and 4th week of every month)  
-**Communication:** Email and scheduled Slack channels  
-**Response time:** 24-48 hours during the work week  
-**Recommended Tools:**
-- **Coding:** Google Colab Free Tier  
-- **Collaboration:** GitHub, Notion  
-- **Virtual Meetings:** Zoom, Google Meet  
+
+**Official check-ins:** During our biweekly 45-minute AI Studio Lab Section meeting block (2nd and 4th week of every month)
+
+ **Other ways to reach out to me with questions:** 
+* [e.g., Your team's channel within Break Through Tech’s Discord space]
+* [e.g., Email; please copy your teammates and AI Studio Coach]
+* [e.g., Request a team check-in on Zoom]
+* [Note: I will aim to respond within 48 hours. Please reach out to your AI Studio Coach with urgent questions.]
+
+> 💡 **Challenge Advisor: Please update the above based on your availability and preference. If you are not able to answer questions or meet with fellows outside of the biweekly Lab Section check-ins, simply write in "N/A (only available during the official check-in times)"**
+
+**Recommended free coding / collaboration tools**
+* […]
+* […]
 
 ---
 
 ## 🚀 Getting Started
-1. **Review this overview document** and note any questions for our first meeting.
-2. **Begin reviewing the dataset** using the link provided in the Dataset section.
-3. **Read the GitHub Projects documentation** [here](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects).
 
-I'm excited to work with you!
+1. **Review this overview document** and note any questions for our first meeting
+2. **Begin reviewing the dataset** using the link above
+3. **Read the GitHub Projects documentation** [here](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+
+I’m excited to work with you!
 
 ---
 
 ## ❓ Questions?
-Please bring any questions to our first meeting during the week of August 24th (Break Through Tech's Bridge to Studio - Session B).
+
+Please bring any questions to our first meeting during the week of August 24th (Break Through Tech’s Bridge to Studio - Session C). 
