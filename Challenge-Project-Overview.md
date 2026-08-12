@@ -66,9 +66,9 @@ Use these milestones to guide your work. Your team will create a GitHub Projects
 
 | Month | Milestone | Key Activities |
 |---|---|---|
-| September | [Title] | Data exploration & cleaning; EDA on fraud vs. non-fraud patterns, review the provided data dictionary, establish a baseline model (logistic regression) and baseline metrics. |
-| October | [Title] | Feature engineering; address class imbalance (class weighting, SMOTE), train/tune 2–3 model types (random forest, gradient boosting) and compare. |
-| November | [Title] | Finalize best model, evaluate with business-relevant metrics, add interpretability (SHAP or feature importance); polish GitHub repo, write-up, and final presentation. |
+| September | Foundations: EDA & Baseline Model | Data exploration & cleaning; EDA on fraud vs. non-fraud patterns; review the provided data dictionary; audit the feature list for potential leakage (see Dataset section below) and finalize which columns are safe to use; establish a baseline model (logistic regression) and baseline metrics using a hold-out (not K-Fold) split. |
+| October | Feature Engineering & Imbalance Handling | Engineering & Imbalance Handling	Feature engineering; address class imbalance (class weighting, SMOTE); train/tune 2–3 model types (random forest, gradient boosting) and compare, continuing to validate on the same hold-out/temporal split established in September. |
+| November | Finalization, Interpretability & Model Card | Finalize best model; evaluate with business-relevant metrics; add interpretability (SHAP or feature importance); write a model card summarizing the model's purpose, performance, key risk drivers, and known limitations; polish GitHub repo, write-up, and final presentation. |
 
 > **Note for the team:** Please create a GitHub Projects board in this repository to break these milestones into weekly tasks. Go to the **Projects** tab → **New project** → Choose **Board** → Add columns for each month.
 
@@ -81,9 +81,9 @@ Use these milestones to guide your work. Your team will create a GitHub Projects
 **Location:** https://www.kaggle.com/datasets/shivamb/vehicle-claim-fraud-detection
 
 ### Key Details
-- [Brief description of what's in the data]
-- [Any known limitations or preprocessing needed]
-- [Link to data dictionary or documentation, if available]
+- Structured tabular data on auto insurance claims from 1994–1996, covering policy details, claimant demographics, and incident characteristics, with a binary fraud label (FraudFound_P). No missing values, but the fraud class is rare (~6% of claims), so class imbalance needs to be addressed during modeling.
+- Feature leakage audit needed: a few fields (eg: PoliceReportFiled, WitnessPresent, NumberOfSuppliments, AddressChange_Claim) may reflect information recorded during or after a fraud investigation rather than at the time the claim was filed. Before modeling, the team should review each feature's timing and drop or flag anything that would leak future information into the model.
+- Data dictionary: Kaggle's page does not include a full data dictionary. I will prepare and add one to the /data folder before kickoff, covering each column's name, type, and definition.
 
 ---
 
@@ -92,10 +92,16 @@ Use these milestones to guide your work. Your team will create a GitHub Projects
 **ML Problem Type:** Classification  
 
 **Recommended Libraries:**
-- [e.g., pandas, scikit-learn, TensorFlow, Hugging Face]
+- pandas, numpy — data handling
+- scikit-learn — modeling (logistic regression, random forest, gradient boosting)
+- imbalanced-learn — class imbalance handling (SMOTE, class weighting)
+- SHAP — model interpretability
+- matplotlib / seaborn — EDA and visualization
 
 **Evaluation Metrics:**
-- [e.g., Accuracy, Precision/Recall, RMSE, BLEU score]
+- Precision, Recall, F1, and PR-AUC on the fraud (minority) class
+- Business-framed metric: % of fraud captured if investigators review only the top 10–20% highest-scored claims
+- Validation approach: use a hold-out or temporal split rather than standard K-Fold cross-validation, since the data spans multiple years — this avoids leaking information across time and better reflects how the model would perform on future claims.
   
 ---
 
@@ -104,19 +110,19 @@ Use these milestones to guide your work. Your team will create a GitHub Projects
 The following resources will help your team understand the problem space and potential technical approaches for this project:
 
 **Background Reading:**
-- [e.g., Link to an article or blog post about the problem domain]
-- [e.g., Link to an industry report or case study]
+- [Figshare: fraud_oracle.csv dataset background](https://figshare.com/articles/dataset/fraud_oracle_csv/24994233?file=44033394) — background on the source study behind this dataset
 
 **Technical Tutorials:**
-- [e.g., Link to a free tutorial on the ML technique(s) involved]
-- [e.g., Link to documentation for a key library or tool]
+- [imbalanced-learn documentation](https://imbalanced-learn.org/stable/) — for handling class imbalance (SMOTE, class weighting)
+- [SHAP documentation](https://shap.readthedocs.io/) — for the November interpretability/model card work
 
 **Code Examples:**
-- [e.g., Link to a relevant GitHub repo]
-- [e.g., Link to a sample implementation or starter code]
+- [MLOps Basic Open-Source Tool Series: EDA + Deepchecks + Random Forest on this dataset](https://www.nb-data.com/p/mlops-basic-open-source-tool-series-882)
+- [Kaggle notebook: Insurance Fraud Detection Using 12 Models](https://www.kaggle.com/code/niteshyadav3103/insurance-fraud-detection-using-12-models)
+- [Kaggle notebook: Insurance Fraud Claims Detection](https://www.kaggle.com/code/buntyshah/insurance-fraud-claims-detection)
 
 **Other:**
-- [Links to any additional resources — e.g., papers, videos, podcasts, etc.]
+- [Model Cards for Model Reporting (Google, foundational paper on model card format)](https://arxiv.org/abs/1810.03993) — useful reference for structuring your November model card deliverable
 
 *Feel free to explore beyond these, and share anything interesting you find with me!*
 
@@ -127,16 +133,16 @@ The following resources will help your team understand the problem space and pot
 **Official check-ins:** During our biweekly 45-minute AI Studio Lab Section meeting block (2nd and 4th week of every month)
 
  **Other ways to reach out to me with questions:** 
-* [e.g., Your team's channel within Break Through Tech’s Discord space]
-* [e.g., Email; please copy your teammates and AI Studio Coach]
-* [e.g., Request a team check-in on Zoom]
-* [Note: I will aim to respond within 48 hours. Please reach out to your AI Studio Coach with urgent questions.]
+* Your team's channel within Break Through Tech’s Discord space
+* Email: please copy your teammates and AI Studio Coach
+* Request a team check-in on Zoom
+* Note: I will aim to respond within 48 hours. Please reach out to your AI Studio Coach with urgent questions.
 
 > 💡 **Challenge Advisor: Please update the above based on your availability and preference. If you are not able to answer questions or meet with fellows outside of the biweekly Lab Section check-ins, simply write in "N/A (only available during the official check-in times)"**
 
 **Recommended free coding / collaboration tools**
-* […]
-* […]
+- Google Colab (free tier)
+- GitHub (repo + Projects board)
 
 ---
 
