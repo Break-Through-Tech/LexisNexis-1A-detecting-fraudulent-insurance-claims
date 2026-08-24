@@ -2,6 +2,7 @@
 
 **Company / Org:** LexisNexis Risk Solutions Group  
 **Challenge Advisor:** Stephanie Le, ledaquynhnhi@gmail.com  
+**AI Studio Coach:** Ananya Devarakonda, ananya.devarakonda@breakthroughtech.org    
 **Program:** Break Through Tech AI Studio - Fall 2026  
 
 ---
