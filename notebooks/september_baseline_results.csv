@@ -1,0 +1,9 @@
+,Baseline LogReg,Balanced LogReg (October preview),Random guess
+Precision (0.5 threshold),0.333,0.101,
+Recall (0.5 threshold),0.005,0.676,
+F1 (0.5 threshold),0.009,0.176,
+PR-AUC,0.101,0.096,0.052
+Precision @ top 10%,0.086,0.076,0.052
+Fraud caught @ top 10%,0.164,0.146,0.1
+Precision @ top 20%,0.087,0.089,0.052
+Fraud caught @ top 20%,0.333,0.343,0.2
