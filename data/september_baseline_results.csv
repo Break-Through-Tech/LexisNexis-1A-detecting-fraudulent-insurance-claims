@@ -1,0 +1,12 @@
+,Baseline LogReg (validation 1995),Balanced LogReg (validation 1995),Baseline LogReg (test 1996),Random guess (test 1996)
+Precision (0.5 threshold),0.0556,0.1024,0.0,
+Recall (0.5 threshold),0.0033,0.4385,0.0,
+F1 (0.5 threshold),0.0063,0.166,0.0,
+PR-AUC,0.1002,0.0973,0.0947,0.0522
+Precision @ top 10%,0.1021,0.1137,0.0833,0.0522
+Fraud caught @ top 10%,0.1761,0.196,0.1596,0.1
+Precision @ top 20%,0.1011,0.0972,0.0907,0.0522
+Fraud caught @ top 20%,0.3488,0.3355,0.3474,0.2
+Precision (top 20% threshold),,,0.0926,
+Recall (top 20% threshold),,,0.4319,
+F1 (top 20% threshold),,,0.1526,
