@@ -1,0 +1,29 @@
+{
+  "logistic_regression": {
+    "best_params": {
+      "C": 0.008260808399079604
+    },
+    "cv_pr_auc_1994": 0.2033
+  },
+  "random_forest": {
+    "best_params": {
+      "max_depth": 20,
+      "max_features": "sqrt",
+      "min_samples_leaf": 10,
+      "n_estimators": 500
+    },
+    "cv_pr_auc_1994": 0.2414
+  },
+  "gradient_boosting": {
+    "best_params": {
+      "l2_regularization": 0.1,
+      "learning_rate": 0.029266761285490727,
+      "max_depth": null,
+      "max_features": 1.0,
+      "max_iter": 100,
+      "max_leaf_nodes": 15,
+      "min_samples_leaf": 20
+    },
+    "cv_pr_auc_1994": 0.2638
+  }
+}
