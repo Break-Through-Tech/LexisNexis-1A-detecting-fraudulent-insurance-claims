@@ -204,10 +204,27 @@ can be added back. This is the single clearest question to put to them.
 |---|---|---|---|---|
 | 1994 | 6,141 | 409 | 6.66% | Training |
 | 1995 | 5,195 | 301 | 5.79% | Validation |
-| 1996 | 4,083 | 213 | 5.22% | Test, sealed until November |
+| 1996 | 4,083 | 213 | 5.22% | Test, held for November |
 
-The fraud rate falls every year. That matters for November, because a score
-cutoff chosen on 1995 will flag more of 1996 than intended. A cutoff set to flag
-the top 20% of 1995 flags 24.3% of 1996. The fix is to set the cutoff by review
-capacity, meaning take the highest-scored N claims, rather than by a fixed
-probability threshold.
+### The status of 1996
+
+1996 was scored once, in Milestone 1, to get a baseline number for the plain
+logistic regression. That run is recorded in `september_baseline_results.csv`
+and it reached a PR-AUC of 0.0947 against a random-guess floor of 0.0522.
+
+Nothing in Milestone 2 used 1996. Every feature decision, every model
+comparison, and the final selection were all made on the 1995 validation year
+alone, which is what keeps the November run meaningful. It is more accurate to
+say that 1996 has not been used for choosing anything than to say it has never
+been opened.
+
+### What the falling fraud rate means for November
+
+The fraud rate drops every year, 6.66% to 5.79% to 5.22%. That matters because a
+score cutoff chosen on 1995 will flag more of 1996 than intended. A cutoff set
+to flag the top 20% of 1995 flags 24.3% of 1996.
+
+The fix is to set the cutoff by review capacity, meaning take the highest-scored
+N claims, rather than by a fixed probability threshold. The November number will
+likely come in below the 1995 number for the same reason, and that is drift in
+the data rather than a fault in the model.

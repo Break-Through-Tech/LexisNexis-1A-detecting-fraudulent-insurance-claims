@@ -1,0 +1,22 @@
+{
+  "selected_model": "RandomForestClassifier, fully grown",
+  "settings": {
+    "n_estimators": 500,
+    "class_weight": "balanced",
+    "max_depth": null,
+    "min_samples_leaf": 1
+  },
+  "feature_list": "data/model_features.json (24 columns)",
+  "recommended_review_capacity": 0.1,
+  "validation_1995": {
+    "pr_auc": 0.1556,
+    "caught_top_10": 0.3223,
+    "caught_top_20": 0.5382
+  },
+  "lookup_baseline_1995": {
+    "pr_auc": 0.1289,
+    "caught_top_10": 0.2359,
+    "caught_top_20": 0.4917
+  },
+  "test_year_status": "1996 was scored once in Milestone 1 for the baseline logistic regression (PR-AUC 0.0947). It was not used in any Milestone 2 model selection. Reserved for one final run in November."
+}
